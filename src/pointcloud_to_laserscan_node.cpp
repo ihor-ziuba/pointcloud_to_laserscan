@@ -120,6 +120,7 @@ void PointCloudToLaserScanNode::subscriptionListenerThreadLoop()
           "Got a subscriber to laserscan, starting pointcloud subscriber");
         rclcpp::SensorDataQoS qos;
         qos.keep_last(input_queue_size_);
+        qos.best_effort();
         sub_.subscribe(this, "cloud_in", qos);
       }
     } else if (sub_.getSubscriber()) {
